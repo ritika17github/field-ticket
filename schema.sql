@@ -1,0 +1,20 @@
+USE field_ticket;
+
+CREATE TABLE customers (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY
+  , name VARCHAR(150) NOT NULL
+) ENGINE = InnoDB;
+
+CREATE TABLE jobs (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY
+  , customer_id INT UNSIGNED NOT NULL
+  , name VARCHAR(150) NOT NULL
+  , CONSTRAINT fk_jobs_customer FOREIGN KEY (customer_id) REFERENCES customers(id)
+) ENGINE = InnoDB;
+
+CREATE TABLE locations (
+  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY
+  , job_id INT UNSIGNED NOT NULL
+  , name VARCHAR(150) NOT NULL
+  , CONSTRAINT fk_locations_job FOREIGN KEY (job_id) REFERENCES jobs(id)
+) ENGINE = InnoDB;

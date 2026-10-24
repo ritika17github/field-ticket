@@ -1,0 +1,435 @@
+/* Plain CSS. Existing field names and JavaScript hooks are preserved. */
+:root {
+    --navy:#172e49;
+    --ink:#25364a;
+    --muted:#617085;
+    --line:#dce3eb;
+    --accent:#176b76;
+    --canvas:#f3f5f8;
+}
+
+* {
+    box-sizing:border-box;
+}
+
+body {
+    margin:0;
+    background:var(--canvas);
+    color:var(--ink);
+    font-family:"Segoe UI",Arial,sans-serif;
+    font-size:13px;
+    line-height:1.5;
+}
+
+header {
+    background:var(--navy);
+    color:#fff;
+    border-bottom:3px solid #478d96;
+    padding:23px max(24px,calc((100% - 1232px)/2));
+}
+
+.header-content {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+h1 {
+    margin:0;
+    font-size:24px;
+    font-weight:600;
+    letter-spacing:-.5px;
+}
+
+.header-caption {
+    margin:3px 0 0;
+    color:#c9d6e4;
+    font-size:13px;
+}
+
+.ticket-badge {
+    border:1px solid #536880;
+    border-radius:5px;
+    padding:6px 12px;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.8px;
+    text-transform:uppercase;
+    white-space:nowrap;
+}
+
+main {
+    max-width:1280px;
+    margin:26px auto 40px;
+    padding:0 24px;
+}
+
+#ticket-form {
+    counter-reset:section;
+}
+
+section {
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:23px 24px;
+    margin-bottom:18px;
+    box-shadow:0 2px 4px rgb(23 46 73 / 2%);
+    counter-increment:section;
+    display:flow-root;
+}
+
+h2 {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:0 0 22px;
+    color:var(--navy);
+    font-size:15px;
+    font-weight:600;
+}
+
+h2::before {
+    content:counter(section,decimal-leading-zero);
+    display:inline-grid;
+    place-items:center;
+    width:27px;
+    height:27px;
+    border-radius:6px;
+    background:#edf3f6;
+    color:var(--accent);
+    font-size:11px;
+    font-weight:700;
+    flex-shrink:0;
+}
+
+label {
+    color:#526176;
+    font-size:11px;
+    font-weight:600;
+}
+
+input,select,textarea,button {
+    font:inherit;
+}
+
+input,select,textarea {
+    width:100%;
+    min-width:0;
+    border:1px solid #cfd8e3;
+    border-radius:5px;
+    color:var(--ink);
+    background:#fff;
+    padding:8px 10px;
+    font-size:12px;
+}
+
+input,select {
+    min-height:37px;
+}
+
+select {
+    cursor:pointer;
+}
+
+input[type="number"],input[readonly] {
+    font-variant-numeric:tabular-nums;
+}
+
+input[readonly] {
+    background:#f0f3f6;
+    border-color:#e0e5ec;
+    color:#526176;
+}
+
+select:disabled {
+    color:#7d8999;
+    background:#f7f8fa;
+    cursor:wait;
+}
+
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible {
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+}
+
+input:focus,select:focus,textarea:focus {
+    border-color:#478d96;
+}
+
+section[aria-labelledby="project-heading"] {
+    display:grid;
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:17px 52px;
+}
+
+#project-heading {
+    grid-column:1 / -1;
+    margin-bottom:2px;
+}
+
+section[aria-labelledby="project-heading"]>div {
+    display:grid;
+    grid-template-columns:104px minmax(0,1fr);
+    align-items:center;
+    gap:12px;
+}
+
+section[aria-labelledby="project-heading"]>div:nth-of-type(1) {
+    grid-column:1;
+    grid-row:2;
+}
+
+section[aria-labelledby="project-heading"]>div:nth-of-type(2) {
+    grid-column:1;
+    grid-row:3;
+}
+
+section[aria-labelledby="project-heading"]>div:nth-of-type(3) {
+    grid-column:1;
+    grid-row:4;
+}
+
+section[aria-labelledby="project-heading"]>div:nth-of-type(4) {
+    grid-column:1;
+    grid-row:5;
+}
+
+section[aria-labelledby="project-heading"]>div:nth-of-type(5) {
+    grid-column:2;
+    grid-row:2;
+}
+
+section[aria-labelledby="project-heading"]>div:nth-of-type(6) {
+    grid-column:2;
+    grid-row:3;
+}
+
+section[aria-labelledby="project-heading"]>div:nth-of-type(7) {
+    grid-column:2;
+    grid-row:4;
+}
+
+label[for="description"] {
+    display:block;
+    margin-bottom:7px;
+}
+
+#description {
+    display:block;
+    min-height:145px;
+    resize:vertical;
+    line-height:1.6;
+}
+
+.labour-row,.truck-row,.misc-row {
+    display:grid;
+    align-items:end;
+    gap:10px;
+    padding-bottom:18px;
+    margin-bottom:16px;
+    border-bottom:1px solid #edf0f4;
+}
+
+.labour-row {
+    grid-template-columns:repeat(3,minmax(0,1.15fr)) minmax(0,.9fr) minmax(0,.8fr) minmax(0,.9fr) minmax(0,.8fr) 28px 28px;
+}
+
+.truck-row {
+    grid-template-columns:minmax(0,1.6fr) minmax(0,.8fr) repeat(3,minmax(0,1fr)) 28px 28px;
+}
+
+.misc-row {
+    grid-template-columns:minmax(0,2fr) repeat(2,minmax(0,1fr)) minmax(0,.8fr) minmax(0,1.1fr) 28px 28px;
+}
+
+.labour-row>label,.truck-row>label,.misc-row>label {
+    display:flex;
+    flex-direction:column;
+    min-width:0;
+    gap:7px;
+}
+
+.labour-row>button,.truck-row>button,.misc-row>button {
+    width:28px;
+    height:28px;
+    margin-bottom:4px;
+    padding:0;
+    display:grid;
+    place-items:center;
+    border:1px solid;
+    border-radius:6px;
+    font-size:19px;
+    line-height:1;
+    cursor:pointer;
+}
+
+.add-labour,.add-truck,.add-misc {
+    color:#176b76;
+    background:#eef7f7;
+    border-color:#b8d9dd!important;
+}
+
+.remove-labour,.remove-truck,.remove-misc {
+    color:#a7464a;
+    background:#fff;
+    border-color:#e7cdd0!important;
+}
+
+.add-labour:hover,.add-truck:hover,.add-misc:hover {
+    background:#dceff0;
+}
+
+.remove-labour:hover,.remove-truck:hover,.remove-misc:hover {
+    background:#fceff0;
+}
+
+label[for$="-subtotal"] {
+    display:inline-block;
+    line-height:37px;
+    color:#46576c;
+}
+
+#labour-subtotal,#truck-subtotal,#misc-subtotal {
+    float:right;
+    width:230px;
+    max-width:55%;
+    color:var(--navy);
+    background:#edf3f6;
+    border-color:#dce6ee;
+    text-align:right;
+    font-size:14px;
+    font-weight:600;
+}
+
+#ticket-form>div:last-child {
+    display:flex;
+    justify-content:flex-end;
+    padding:3px 0;
+}
+
+#finish {
+    min-width:144px;
+    min-height:43px;
+    padding:10px 28px;
+    border:1px solid var(--navy);
+    border-radius:6px;
+    background:var(--navy);
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+}
+
+#finish:hover:not(:disabled) {
+    background:#254663;
+}
+
+#finish:disabled {
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+[role="alert"] {
+    color:#9b333e;
+    padding:10px 12px;
+    background:#fff2f3;
+    border-radius:5px;
+}
+
+section[aria-labelledby="project-heading"]>[role="alert"] {
+    grid-column:1 / -1;
+}
+
+@media(max-width:1000px) {
+    main {
+        padding:0 16px;
+    }
+    section {
+        padding:20px 16px;
+    }
+    section[aria-labelledby="project-heading"] {
+        column-gap:28px;
+    }
+    section[aria-labelledby="project-heading"]>div {
+        grid-template-columns:91px minmax(0,1fr);
+        gap:8px;
+    }
+    .labour-row,.truck-row,.misc-row {
+        gap:7px;
+    }
+    .labour-row input,.labour-row select {
+        padding-left:6px;
+        padding-right:3px;
+        font-size:11px;
+    }
+    .labour-row>label {
+        font-size:10px;
+    }
+}
+
+@media(max-width:760px) {
+    .labour-row {
+        grid-template-columns:repeat(4,minmax(0,1fr));
+    }
+    .truck-row,.misc-row {
+        grid-template-columns:repeat(3,minmax(0,1fr));
+    }
+    .labour-row input,.labour-row select {
+        font-size:12px;
+        padding:8px;
+    }
+    .labour-row>label {
+        font-size:11px;
+    }
+    section[aria-labelledby="project-heading"] {
+        column-gap:20px;
+    }
+    section[aria-labelledby="project-heading"]>div {
+        display:flex;
+        flex-direction:column;
+        align-items:stretch;
+        gap:6px;
+    }
+}
+
+@media(max-width:520px) {
+    header {
+        padding:20px 18px;
+    }
+    h1 {
+        font-size:22px;
+    }
+    .header-caption {
+        max-width:220px;
+        font-size:12px;
+    }
+    .ticket-badge {
+        display:none;
+    }
+    main {
+        margin-top:16px;
+        padding:0 10px;
+    }
+    section {
+        padding:18px 14px;
+        border-radius:8px;
+    }
+    section[aria-labelledby="project-heading"] {
+        display:block;
+    }
+    section[aria-labelledby="project-heading"]>div {
+        margin-top:14px;
+    }
+    .labour-row,.truck-row,.misc-row {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+        gap:12px;
+    }
+    #labour-subtotal,#truck-subtotal,#misc-subtotal {
+        width:180px;
+    }
+    #finish {
+        width:100%;
+    }
+}
+
